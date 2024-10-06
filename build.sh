@@ -512,7 +512,7 @@ for n in $(seq 0 9); do
 	else
 		HIT_CIRCLE_OVERLAP=1
 
-		generate_empty_png "yr32/default-$n@2x"
+		generate_empty_png "default-$n@2x"
 	fi
 done
 
