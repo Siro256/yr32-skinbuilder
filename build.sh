@@ -6,8 +6,8 @@ shopt -s extglob
 ####################
 
 set +u
-if [[ "${STYLE}" != "number" ]]; then
-	STYLE="dot"
+if [[ "${STYLE}" != "number" && "${STYLE}" != "dot" ]]; then
+	STYLE="none"
 fi
 set -u
 
@@ -506,9 +506,15 @@ for n in $(seq 0 9); do
 			-gravity north \
 			-splice 0x10 \
 			"yr32/default-$n@2x.png"
-	else
+	elif [[ "${STYLE}" == "number" ]]; then
 		HIT_CIRCLE_OVERLAP=10
 		generate_circle_number "$n" "yr32/default-$n@2x.png"
+	else
+		HIT_CIRCLE_OVERLAP=1
+
+		convert -size 1x1 \
+			-fill "#00000000" \
+			"yr32/default-$n@2x.png"
 	fi
 done
 
