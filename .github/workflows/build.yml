@@ -32,3 +32,6 @@ jobs:
         run: |
           STYLE=number ./build.sh
 
+      - name: build-none
+        run: |
+          STYLE=none ./build.sh
